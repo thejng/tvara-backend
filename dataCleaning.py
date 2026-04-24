@@ -13,7 +13,7 @@ def clean_train_data(input_file_path, output_file_path):
             raw_content = f.read()
 
         # Step 1: Clean the outer keys like "'00851'" -> '"00851"'
-        # This regex finds a single quote, followed by numbers, followed by a single quote, used as a key
+      
         cleaned_content = re.sub(r"\"'(\d+)'\":", r'"\1":', raw_content)
 
         # Step 2: Parse the partially cleaned JSON
@@ -33,7 +33,7 @@ def clean_train_data(input_file_path, output_file_path):
 
         cleaned_data = recursive_clean(data)
 
-        # Step 4: Save the fully cleaned data
+        # Step 4: Save the fully cleaned data and use it
         with open(output_file_path, 'w', encoding='utf-8') as f:
             json.dump(cleaned_data, f, indent=2)
 
